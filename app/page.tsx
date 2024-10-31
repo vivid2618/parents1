@@ -114,7 +114,6 @@ export default function Home() {
       [`${sectionIndex}-${questionIndex}`]: score
     });
   };
-
   const calculateSectionScore = (sectionIndex: number) => {
     let total = 0;
     const sectionQuestions = sections[sectionIndex].questions;
