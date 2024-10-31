@@ -114,6 +114,7 @@ export default function Home() {
       [`${sectionIndex}-${questionIndex}`]: score
     });
   };
+
   const calculateSectionScore = (sectionIndex: number) => {
     let total = 0;
     const sectionQuestions = sections[sectionIndex].questions;
@@ -128,12 +129,12 @@ export default function Home() {
     if (score < 12) return "부분 개선 필요";
     return "양호";
   };
-return (
+  return (
     <main className="max-w-4xl mx-auto p-4">
       <h1 className="text-2xl font-bold text-center mb-8">부모의 문제해결력 자가진단 체크리스트</h1>
       
       {sections.map((section, sectionIndex) => (
-        <div key={sectionIndex} className="mb-8 border rounded-lg p-6 shadow-sm">
+        <div key={sectionIndex} className="mb-8 bg-white shadow-lg rounded-lg p-6">
           <h2 className="text-xl font-bold mb-4">{section.title}</h2>
           
           {section.questions.map((question, questionIndex) => (
@@ -165,19 +166,20 @@ return (
         </div>
       ))}
 
-      <div className="mt-8 p-6 bg-gray-100 rounded-lg">
-        <h3 className="text-xl font-bold mb-4">실천 가이드</h3>
+      <div className="mt-8 bg-white shadow-lg rounded-lg p-6">
+        <h3 className="text-xl font-bold mb-4">맞춤형 개선 가이드</h3>
         <div className="space-y-4">
           {sections.map((section, index) => {
             const score = calculateSectionScore(index);
             if (score < 12) {
               return (
-                <div key={index} className="p-4 bg-white rounded-lg">
-                  <h4 className="font-bold text-red-600">{section.title}</h4>
-                  <ul className="list-disc ml-5 mt-2">
+                <div key={index} className="p-4 bg-gray-50 rounded-lg">
+                  <h4 className="font-bold text-red-600 mb-2">{section.title} 개선 방안</h4>
+                  <ul className="list-disc ml-5 space-y-2">
                     <li>매일 저녁 시간을 정해 이 영역의 문제해결 연습하기</li>
                     <li>관련 전문가의 조언 구하기</li>
-                    <li>가족과 함께 개선 계획 세우기</li>
+                    <li>가족과 함께 개선 계획 세우고 실천하기</li>
+                    <li>성공/실패 사례 기록하고 분석하기</li>
                   </ul>
                 </div>
               );
